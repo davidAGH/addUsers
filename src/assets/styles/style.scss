@@ -1,0 +1,127 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@mixin buttonMix($color) {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    border: none;
+    border-radius: 6px;
+    color: #FFF;
+    background-color: $color;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: background-color 0.2s, box-shadow 0.2s;
+    font-family: cursive;
+}
+
+.container {
+    width: 1000px;
+    text-align: center;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #25A3B8;
+    font-family: cursive;
+    .input-button {
+        input {
+            margin: 5px;
+            margin-bottom: 50px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 30px;
+            font-family: cursive;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 5px #007bff;
+        }
+        
+        input:hover {
+            background-color: #f9f9f9;
+        }
+        
+        input:disabled {
+            opacity: 0.5;
+        }
+        button {
+            margin: 10px;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 30px;
+            background-color: #fff;
+            color: black;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-family: cursive;
+        }
+        
+        button:hover {
+            background-color: #fff;
+        }
+        
+        button:active {
+            background-color: #fff;
+        }
+        
+        button:disabled {
+            background-color: #ccc;
+            color: #666;
+            cursor: not-allowed;
+        }
+    }
+
+    .table-content {
+        table {
+            width: 100%; 
+            border-collapse: collapse; 
+            font-family: cursive;
+            font-size: 17px;
+            color: #333;
+  
+            th {
+                background-color: #fff;
+                font-weight: bold;
+                padding: 8px; 
+                border: 1px solid ;
+                margin: 3px;
+                
+            }
+    
+            td {
+                padding: 8px;
+                background-color: #fff;
+                margin: 2px;
+                border: 1px solid;
+
+                button {
+                    margin-left: 5px;
+                }
+                .update {
+                    @include buttonMix(#25A3B8)
+                }
+                .delete {
+                    @include buttonMix(#DC3545)
+                }
+                .view {
+                    @include buttonMix(#25A3B8)
+                }
+            }
+        }
+    }
+    .user-details {
+        button {
+            @include buttonMix(#DC3545)
+        }
+    }
+}
