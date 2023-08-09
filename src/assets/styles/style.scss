@@ -113,15 +113,116 @@
                 .delete {
                     @include buttonMix(#DC3545)
                 }
-                .view {
-                    @include buttonMix(#25A3B8)
-                }
             }
+        }
+        .buttonList {
+            margin-top: 10px;
+            @include buttonMix(#DC3545)
         }
     }
     .user-details {
         button {
             @include buttonMix(#DC3545)
+        }
+    }
+}
+
+.Bigconteiner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    font-family: cursive;
+    background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+    .main {
+        
+        width: 450px;
+        height: 600px;
+        background: red;
+        overflow: hidden;
+        background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+        border-radius: 10px;
+        box-shadow: 5px 20px 50px #000;
+        #chk {
+            display: none;
+        }
+        .signup {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        label {
+            color: #fff;
+            font-size: 2.3em;
+            justify-content: center;
+            display: flex;
+            margin: 60px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: .5s ease-in-out;
+        }
+        input {
+            width: 70%;
+            height: 50px;
+            background: #e0dede;
+            justify-content: center;
+            display: flex;
+            margin: 30px auto;
+            padding: 10px;
+            border: none;
+            outline: none;
+            border-radius: 5px;
+            font-family: cursive;
+        }
+        button {
+            width: 60%;
+            height: 50px;
+            margin:  0 auto;
+            justify-content: center;
+            display: block;
+            color: #fff;
+            background: #573b8a;
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-top: 30px;
+            outline: none;
+            border: none;
+            border-radius: 5px;
+            transition: .2s ease-in;
+            cursor: pointer;
+            font-family: cursive;
+        }
+        button:hover {
+            background-color: #6d44b8;
+        }
+        
+        .login {
+            height: 560px;
+            background-color: #eee;
+            border-radius: 60% / 10%;
+            transition: transform 0.8s ease-in-out;
+            overflow: hidden;
+            
+            .slide-in {
+                transform: translateY(-30px);
+            }
+            label {
+                color: #573b8a;
+                transform: scale(.6);
+            }
+        }
+        #chk:checked ~ .login-label {
+            transform: scale(0.6); 
+        }
+        #chk:checked ~ .login {
+            transform: translateY(-500px);
+        }
+        #chk:checked ~ .login label {
+            transform: scale(1);
+        }
+        #chk:checked ~ .signup label {
+            transform: scale(.6);
         }
     }
 }
