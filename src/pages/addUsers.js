@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { memo } from "react";
 import { useForm } from "react-hook-form";
+import { User } from "./user";
 
 export const AddUsers = memo(() => {
     const { register, handleSubmit, reset } = useForm();
@@ -12,6 +13,10 @@ export const AddUsers = memo(() => {
     const [showLogin, setShowLogin] = useState(false);
     const [showList, setShowList] = useState(false);
     const [showSign, setShowSign] = useState(true);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    const [inputLogin1, setLogin1] = useState('')
+    const [inputLogin2, setLogin2] = useState('')
 
     const InputChange1 = (e) => {
         setInputValue1(e.target.value);
@@ -25,12 +30,12 @@ export const AddUsers = memo(() => {
         setInputValue3(e.target.value);
     };
 
-	const loginChange1 = (id) => {
-
+	const loginChange1 = (e) => {
+        setLogin1(e.target.value);
 	}
 
-	const loginChange2 = (id) => {
-		
+	const loginChange2 = (e) => {
+		setLogin2(e.target.value);
 	}
 
     const isValidEmail = (email) => {
@@ -84,6 +89,7 @@ export const AddUsers = memo(() => {
     };
 
 	const updateUser = (id) => {
+        alert("to update user go back in sign up")
 		const userToUpdate = list.find((item) => item.id === id);
 		if (userToUpdate) {
 			setInputValue1(userToUpdate.title1);
@@ -148,6 +154,28 @@ export const AddUsers = memo(() => {
         }
     };
 
+
+    const loginButton = () => {
+        if (!inputLogin1 || !inputLogin2) {
+            alert("Please fill in all fields.");
+            return;
+        }
+
+        if (!isValidEmail(inputLogin1)) {
+            alert("Please enter a valid email address.");
+            return;
+        }
+
+        const loggedInUser = list.find(user => user.title2 === inputLogin1 && user.title3 === inputLogin2);
+    
+        if (loggedInUser) {
+            setIsLoggedIn(true);
+        } else {
+            alert("Invalid credentials. Please check your email and password.");
+        }
+    };
+
+
 	console.log(list)
 
     return (
@@ -189,11 +217,11 @@ export const AddUsers = memo(() => {
 						</div>
 
 						<div className={`login ${showLogin ? 'slide-in' : ''}`}>
-							<form>
+							<form onSubmit={handleSubmit()}>
 								<label htmlFor="chk" aria-hidden="true" className="login-label">Login</label>
 								<input type="email" name="email" placeholder="Email" required onChange={loginChange1}/>
 								<input type="password" name="txt" placeholder="Password" required onChange={loginChange2}/>
-								<button>Login</button>
+								<button onClick={loginButton} type="submit">Login</button>
 							</form>
 						</div>
 					</div>
@@ -230,6 +258,9 @@ export const AddUsers = memo(() => {
                     </div>
                 </div>
             )}
+
+            {isLoggedIn && <User />}
+            {/* chi ashxadi */}
         </>
     );
 });

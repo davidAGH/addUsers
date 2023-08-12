@@ -1,6 +1,7 @@
 import { AddUsers } from "./pages/addUsers";
 import Loading from "./component/loading";
 import { useState, useEffect } from "react";
+import {Route, Routes, useLocation, useNavigate} from "react-router";
 
 function App() {
     const [loading, setLoading] = useState(true);
@@ -13,14 +14,13 @@ function App() {
 
     return (
         <div className="App">
-             {loading ? 
+            {loading ? 
                 <Loading/>
                 : 
                 <div>
                     <AddUsers/>
                 </div>
             }
-
         </div>
     );
 }
